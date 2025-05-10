@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taye's Garage - Professional Auto Services</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .header {
+        background: radial-gradient(
+          circle at 7.5% 24%,
+          rgb(237, 161, 193) 0%,
+          rgb(250, 178, 172) 25.5%,
+          rgb(190, 228, 210) 62.3%,
+          rgb(215, 248, 247) 93.8%
+        );
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+      }
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+
+        color: #0c005a;
+      }
+      .header p {
+        font-size: 1.4rem;
+        max-width: 800px;
+        margin: 0 auto;
+        opacity: 0.9;
+        color: #c3195d;
+      }
+
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .quick-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        margin-top: 200px;
+      }
+      .info-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 350px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+      .info-card h3 {
+        color: #4e4376;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        text-align: center;
+      }
+      .info-card ul {
+        list-style: none;
+      }
+      .info-card li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+      }
+      .info-card li:before {
+        content: "•";
+        color: #4e4376;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      .cta-button {
+        display: block;
+        background: #4e4376;
+        color: white;
+        text-align: center;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 2rem auto;
+        width: fit-content;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .cta-button:hover {
+        background: #2b5876;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .side-by-side {
+        display: flex;
+        gap: 2rem;
+        margin-top: 3rem;
+        align-items: flex-start;
+      }
+
+      .footer {
+        background: #2b5876;
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 35%;
+        min-width: 300px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .footer h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .footer p {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        line-height: 1.4;
+      }
+      .contact-item span:first-child {
+        font-size: 1.2rem;
+        margin-top: 2px;
+      }
+
+      .services {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 65%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .section-title {
+        margin-bottom: 2rem;
+      }
+      .section-title h2 {
+        color: #2b5876;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .section-title p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.2rem;
+      }
+      .service-card {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.2rem;
+        transition: all 0.3s ease;
+        border-left: 4px solid #4e4376;
+      }
+      .service-card:hover {
+        background: #f0e9ff;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+      .service-card h3 {
+        color: #2b5876;
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .service-card p {
+        color: #555;
+        font-size: 0.9rem;
+        padding-left: 1.8rem;
+      }
+
+      @media (max-width: 900px) {
+        .side-by-side {
+          flex-direction: column;
+        }
+        .footer,
+        .services {
+          width: 100%;
+        }
+        .header h1 {
+          font-size: 2rem;
+        }
+      }
+      @media (max-width: 500px) {
+        .header h1 {
+          font-size: 1.8rem;
+        }
+        .info-card {
+          padding: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Taye's Complete Auto Care</h1>
+      <p>
+        Your trusted partner for all vehicle repairs and maintenance services
+      </p>
+    </header>
+
+    <div class="main-content">
+      <section class="quick-info">
+        <div class="info-card">
+          <h3>Vehicle Types We Service</h3>
+          <ul>
+            <li>Toyota</li>
+            <li>Honda</li>
+            <li>Ford</li>
+            <li>Nissan</li>
+            <li>Hyundai</li>
+            <li>All other makes</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Common Repairs</h3>
+          <ul>
+            <li>Engine Diagnostics</li>
+            <li>Brake Services</li>
+            <li>Suspension Work</li>
+            <li>Electrical Systems</li>
+            <li>AC Repair</li>
+            <li>Transmission</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Why Choose Us?</h3>
+          <ul>
+            <li>Certified Technicians</li>
+            <li>12-Month Warranty</li>
+            <li>Fair Pricing</li>
+            <li>Quick Turnaround</li>
+            <li>Free Diagnostics</li>
+            <li>Loaner Cars Available</li>
+          </ul>
+        </div>
+      </section>
+
+      <button class="cta-button">Schedule Your Appointment Today</button>
+
+      <div class="side-by-side">
+        <footer class="footer">
+          <h3>Taye's Complete Auto Care</h3>
+          <p>123 Kolfe Street, Addis Abeba, AC 12345</p>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <span>📞</span>
+              <span>(251) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <span>✉️</span>
+              <span>service@tayesgarage.com</span>
+            </div>
+            <div class="contact-item">
+              <span>🕒</span>
+              <span>Mon-Fri: 8AM-6PM<br />Sat: 9AM-3PM</span>
+            </div>
+          </div>
+
+          <p style="margin-top: 2rem">
+            © 2023 Taye's Garage. All rights reserved.
+          </p>
+        </footer>
+
+        <section class="services">
+          <div class="section-title">
+            <h2>Our Comprehensive Services</h2>
+            <p>
+              We offer complete automotive solutions using the latest technology
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>🔧 Brake Boost+Check</h3>
+              <p>Complete brake inspection and fluid service</p>
+            </div>
+
+            <div class="service-card">
+              <h3>⚡ EngineScan+Boost</h3>
+              <p>Advanced computer diagnostics and tuning</p>
+            </div>
+
+            <div class="service-card">
+              <h3>🚗 DentFix+Shine</h3>
+              <p>Paintless dent removal with polishing</p>
+            </div>
+
+            <div class="service-card">
+              <h3>🛠️ TireTune+Align</h3>
+              <p>Precision wheel alignment services</p>
+            </div>
+
+            <div class="service-card">
+              <h3>🔋 BatteryCare+Test</h3>
+              <p>Complete electrical system check</p>
+            </div>
+
+            <div class="service-card">
+              <h3>❄️ ACCool+Refresh</h3>
+              <p>AC system recharge and treatment</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script>
+      function form() {
+        let fname = prompt("what is your first name?");
+        let lname = prompt("What is your last name?");
+        let email = prompt("Enter your email Address?");
+        let service = prompt("Which service you select?");
+        let change = document.querySelector(".header p");
+
+        change.innerHTML =
+          "Hello," +
+          fname +
+          ",thank you for your submission;We'll email you appointment details soon.";
+      }
+      let submit = document.querySelector(".cta-button");
+      submit.addEventListener("click", form);
+    </script>
+  </body>
+</html>
